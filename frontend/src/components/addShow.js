@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import React from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 
 const addShow = () => {
   // 1. Create a form object which should match with model fields
@@ -20,25 +20,43 @@ const addShow = () => {
   const userSubmit = (formdata) => {
     console.log(formdata);
   };
-
+//   fetch("http://localhost:5000/users/add", {
+//     method: "POST",
+//     body: JSON.stringify(formdata), //convert javascript to json
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   }).then((res) => {
+//     if (res.status === 200) {
+//       console.log("data saved");
+//       Swal.fire({
+//         icon: "success",
+//         title: "Success",
+//         text: "Registered Successfully!!👍",
+//       });
+//     }
+//   })
+//   .catch((err) => {
+//     console.error(err);
+// });
   //   3. use Formik component
-  const formSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(2, "Too Short username!")
-      .max(10, "Too Long username!")
-      .required("username is Required"),
-    // lastName: Yup.string()
-    //   .min(2, 'Too Short!')
-    //   .max(50, 'Too Long!')
-    //   .required('Required'),
-    email: Yup.string().email("Invalid email").required("Required"),
-    password: Yup.string()
-      .required("Required")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-      ),
-  });
+  // const formSchema = Yup.object().shape({
+  //   username: Yup.string()
+  //     .min(2, "Too Short username!")
+  //     .max(10, "Too Long username!")
+  //     .required("username is Required"),
+  //   // lastName: Yup.string()
+  //   //   .min(2, 'Too Short!')
+  //   //   .max(50, 'Too Long!')
+  //   //   .required('Required'),
+  //   email: Yup.string().email("Invalid email").required("Required"),
+  //   password: Yup.string()
+  //     .required("Required")
+  //     .matches(
+  //       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+  //       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+  //     ),
+  // });
   return (
     <div className="container">
       <div className="card" style={{ marginTop: "10%" }}>
@@ -51,7 +69,7 @@ const addShow = () => {
               {/* <h1>Signup Here</h1> */}
               {/* <hr className="mb-5" /> */}
 
-              <Formik initialValues={userForm} onSubmit={userSubmit} validationSchema={formSchema}>
+              <Formik initialValues={userForm} onSubmit={userSubmit}> 
                 {({ values, handleChange, handleSubmit, errors, touched }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField

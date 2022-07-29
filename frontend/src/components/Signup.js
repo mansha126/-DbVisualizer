@@ -24,7 +24,7 @@ const Signup = () => {
     // 3. data
     // 4. data format
 
-    fetch("http://localhost:5000/users/add", {
+    fetch("http://localhost:5000/shows/add", {
       method: "POST",
       body: JSON.stringify(formdata), //convert javascript to json
       headers: {

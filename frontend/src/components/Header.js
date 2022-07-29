@@ -1,3 +1,4 @@
+import { red } from '@mui/material/colors'
 import React from 'react'
 
 const Header = () => {
@@ -16,7 +17,7 @@ const Header = () => {
           <a className="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li className="nav-item" style={{paddingLeft:'10%'}}>
-          <a className="nav-link" href="loginin">Loginin</a>
+          <a className="nav-link" href="loginin" style={{color:"#000000"}}>Loginin</a>
         </li>
 
         <li className="nav-item" style={{paddingLeft:'10%'}}>
