@@ -5,7 +5,7 @@ const Header = () => {
   return (
   <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Database  Visiualizer
+    <a className="navbar-brand" href="#"style={{color:"#000000"}}>Database  Visiualizer
       {/* <img src='image.png' alt=''/> */}
     </a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,22 +14,22 @@ const Header = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav "style={{marginLeft:'50%'}}>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <a className="nav-link active" aria-current="page" href="#"style={{color:"#000000"}}>Home</a>
         </li>
         <li className="nav-item" style={{paddingLeft:'10%'}}>
           <a className="nav-link" href="loginin" style={{color:"#000000"}}>Loginin</a>
         </li>
 
         <li className="nav-item" style={{paddingLeft:'10%'}}>
-          <a className="nav-link" href="dashboard">Dashboard</a>
+          <a className="nav-link" href="dashboard" style={{color:"#000000"}}>Dashboard</a>
         </li>
 
         <li className="nav-item" style={{paddingLeft:'10%'}}>
-          <a className="nav-link" href="signup">Signup</a>
+          <a className="nav-link" href="signup" style={{color:"#000000"}}>Signup</a>
         </li>
 
         <li className="nav-item" style={{paddingLeft:'10%'}}>
-          <a className="nav-link" href="addshow">addShow</a>
+          <a className="nav-link" href="addshow"style={{color:"#000000"}}>addShow</a>
         </li>
         {/* <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -19,14 +19,23 @@ const addShow = () => {
   // 2. Create a function for form submission
   const userSubmit = (formdata) => {
     console.log(formdata);
+
+    fetch("http://localhost:5000/users/add", {
+    method: "POST",
+    body: JSON.stringify(formdata), //convert javascript to json
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
   };
-//   fetch("http://localhost:5000/users/add", {
-//     method: "POST",
-//     body: JSON.stringify(formdata), //convert javascript to json
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   }).then((res) => {
+  // fetch("http://localhost:5000/users/add", {
+  //   method: "POST",
+  //   body: JSON.stringify(formdata), //convert javascript to json
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
+  // .then((res) => {
 //     if (res.status === 200) {
 //       console.log("data saved");
 //       Swal.fire({
@@ -74,6 +83,7 @@ const addShow = () => {
                   <form onSubmit={handleSubmit}>
                     <TextField
                       label="movietitle"
+                      
                       variant="outlined"
                       className="w-100 mb-4"
                       id="movietitle" // name can also used

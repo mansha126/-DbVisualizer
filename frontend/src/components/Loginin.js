@@ -68,7 +68,7 @@ const Loginin = () => {
             <Formik initialValues={loginform} onSubmit={logininSubmit}>
               {({ values, handleChange, handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <div className="form-floating mt-3">
+                  {/* <div className="form-floating mt-3">
                     <input
                       className="form-control"
                       placeholder="Email"
@@ -77,7 +77,17 @@ const Loginin = () => {
                       onChange={handleChange}
                     />
                     <label>Email</label>
-                  </div>
+                  </div> */}
+
+<TextField
+                    variant="outlined"
+                    className="w-100 mt-3"
+                    label="Email"
+                    type="email"
+                    id="email"
+                    value={values.email}
+                    onChange={handleChange}
+                  />
 
                   <TextField
                     variant="outlined"

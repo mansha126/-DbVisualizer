@@ -22,9 +22,9 @@ io.on("connection",(socket)=>{
 const port = 5000; 
 
 const usersRouter = require('./routers/usersRouter');
-// const showsRouter = require('./routers/showsRouter');
+const showsRouter = require('./routers/showsRouter');
 //import user router
-// const productRouter = require('./routers/productRouter');
+
 const cors =  require('cors');
 
 // to allow  react frontend to access the backend
@@ -36,7 +36,7 @@ app.use(express.json());
 
 //middlewares - to intercept request
 app.use('/users', usersRouter);
-// app.use('/shows',showsRouter);
+app.use('/shows',showsRouter);
 
 app.get('/home',(req,res) => { //route for process get reuest
     res.send('Hello Express!') 
