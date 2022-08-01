@@ -1,5 +1,8 @@
 
 import { Bar } from 'react-chartjs-2';
+
+
+import { useEffect, useState } from "react"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,8 +24,11 @@ ChartJS.register(
 
 
 const Dashboard = () => {
-
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  const [qtyData, setQtyData] = useState({});
+  const [reviewsLoading, setReviewsLoading] = useState(false);
+  const [addShowLoading, setAddShowLoading] = useState(false)
+  
 
   const data = {
     labels,
@@ -39,9 +45,54 @@ const Dashboard = () => {
       },
     ],
   };
+  const extractData = (data, labelfield, datafield) => {
+    const result = {labels : [], data : []}
+    data.map((item) => {
+      result.labels.push(item[labelfield]);
+      result.data.push(item[datafield]);
+    }
+    )
+    console.log(result);
+    return result
+  }
 
+  const loadaddshowData = () => {
+    setAddShowLoading(true)
+    fetch("http://localhost:5000/shows/getall").then((res) => {
+      if (res.status === 200) {
+        res.json().then((data) => {
+          console.log(data)
+          // setProductLoading(false)
+          // setProductData(data)
+
+          setQtyData(extractData(data, "title", "reviews"))
+
+        })
+      }
+    })
+  }
+  useEffect(() => {
+    loadaddshowData()
+  }, [])
+  const displayQtyChart = () => {
+    if (!reviewsLoading) {
+      return <Bar data={
+        {
+          labels : qtyData.labels,
+          datasets: [
+            {
+              label: "Quantity",
+              data: qtyData.data,
+              backgroundColor: "rgba(255, 99, 132, 0.5)",
+            },
+          ],
+        }
+      } />
+    }
+  }
   return <div>
-    <Bar  data={data} />;
+    {/* <Bar  data={data} />; */}
+    {displayQtyChart()}
   </div>;
 };
 

@@ -45,7 +45,7 @@ const Loginin = () => {
   };
 
   return (
-    <div className="login-bg">
+    <div className="login-bg"style={{paddingTop:'5%'}}>
       <div className="col-md-4 col-sm-6 mx-auto my-auto">
         <div className="card">
           <div className="card-body">
