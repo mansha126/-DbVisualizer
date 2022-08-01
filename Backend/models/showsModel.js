@@ -11,4 +11,4 @@ const mySchema = new Schema({
   views: Number,
   createdAt: Date,
 });
-module.exports = model("admin", mySchema);
+module.exports = model("shows", mySchema);
