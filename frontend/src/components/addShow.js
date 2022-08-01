@@ -13,14 +13,14 @@ const addShow = () => {
     reviews: "",
     rating:"",
     views:"",
-    createdaf:"",
+    createdAt:new Date(),
   };
 
   // 2. Create a function for form submission
   const userSubmit = (formdata) => {
     console.log(formdata);
 
-    fetch("http://localhost:5000/users/add", {
+    fetch("http://localhost:5000/shows/add", {
     method: "POST",
     body: JSON.stringify(formdata), //convert javascript to json
     headers: {
@@ -82,15 +82,15 @@ const addShow = () => {
                 {({ values, handleChange, handleSubmit, errors, touched }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
-                      label="movietitle"
+                      label="title"
                       
                       variant="outlined"
                       className="w-100 mb-4"
-                      id="movietitle" // name can also used
+                      id="title" // name can also used
                       onChange={handleChange}
-                      value={values.movietitle} // value passed above
-                      helperText={errors.movietitle}
-                      error={Boolean(errors.movietitle && touched.movietitle)}
+                      value={values.title} // value passed above
+                      helperText={errors.title}
+                      error={Boolean(errors.title && touched.title)}
                     />
                     <TextField
                       label="duration"
