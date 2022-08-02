@@ -15,4 +15,16 @@ router.post('/add',(req,res) => {
     });
 
 })
+
+router.get('/getall', (req, res) => {
+    Model.find({})
+    .then((result) => {
+        console.log(result);
+        res.json(result);        
+    }).catch((err) => {
+        console.error(err);
+        res.json(err);
+    });
+    //res.send('get all from user router')
+})
 module.exports=router;

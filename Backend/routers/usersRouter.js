@@ -6,8 +6,8 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((result) => {
-      console.log(result);
-      console.log("data saved");
+      // console.log(result);
+      // console.log("data saved");
       res.json(result);
     })
     .catch((err) => {
@@ -30,5 +30,17 @@ router.post("/authenticate", (req, res) => {
       res.json(err);
     });
 });
+
+router.get('/getall', (req, res) => {
+  Model.find({})
+  .then((result) => {
+      console.log(result);
+      res.json(result);        
+  }).catch((err) => {
+      console.error(err);
+      res.json(err);
+  });
+  //res.send('get all from user router')
+})
 
 module.exports = router;
