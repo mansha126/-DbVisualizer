@@ -93,6 +93,7 @@ const Dashboard = () => {
   return <div>
     {/* <Bar  data={data} />; */}
     {displayQtyChart()}
+    header
   </div>;
 };
 
