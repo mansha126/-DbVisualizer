@@ -1,33 +1,44 @@
-import { Button, TextField } from "@mui/material";
-import React from "react";
-import { Formik } from "formik";
+import { Button, TextField } from "@mui/material"
+import React from "react"
+import { Formik } from "formik"
+import Swal from "sweetalert2"
 // import * as Yup from "yup";
 
 const addShow = () => {
   // 1. Create a form object which should match with model fields
   const userForm = {
-    title:"",
-    duration:"",
-    genere:"",
-    publisher:"",
+    title: "",
+    duration: "",
+    genere: "",
+    publisher: "",
     reviews: "",
-    rating:"",
-    views:"",
-    createdAt:new Date(),
-  };
+    rating: "",
+    views: "",
+    createdAt: new Date(),
+  }
 
   // 2. Create a function for form submission
   const userSubmit = (formdata) => {
-    console.log(formdata);
+    console.log(formdata)
 
     fetch("http://localhost:5000/shows/add", {
-    method: "POST",
-    body: JSON.stringify(formdata), //convert javascript to json
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  };
+      method: "POST",
+      body: JSON.stringify(formdata), //convert javascript to json
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+          if (res.status === 200) {
+            console.log("data saved");
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Show Added Successfully!!👍",
+            });
+          }
+        })
+  }
   // fetch("http://localhost:5000/users/add", {
   //   method: "POST",
   //   body: JSON.stringify(formdata), //convert javascript to json
@@ -36,18 +47,18 @@ const addShow = () => {
   //   },
   // })
   // .then((res) => {
-//     if (res.status === 200) {
-//       console.log("data saved");
-//       Swal.fire({
-//         icon: "success",
-//         title: "Success",
-//         text: "Registered Successfully!!👍",
-//       });
-//     }
-//   })
-//   .catch((err) => {
-//     console.error(err);
-// });
+  //     if (res.status === 200) {
+  //       console.log("data saved");
+  //       Swal.fire({
+  //         icon: "success",
+  //         title: "Success",
+  //         text: "Registered Successfully!!👍",
+  //       });
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     console.error(err);
+  // });
   //   3. use Formik component
   // const formSchema = Yup.object().shape({
   //   username: Yup.string()
@@ -71,19 +82,16 @@ const addShow = () => {
       <div className="card" style={{ marginTop: "10%" }}>
         <div className="card-body">
           <div className="row">
-            <div className="col">
-              {/* <img src={"frontend/components/image.png"} alt=""/> */}
-            </div>
+            <div className="col">{/* <img src={"frontend/components/image.png"} alt=""/> */}</div>
             <div className="col">
               {/* <h1>Signup Here</h1> */}
               {/* <hr className="mb-5" /> */}
 
-              <Formik initialValues={userForm} onSubmit={userSubmit}> 
+              <Formik initialValues={userForm} onSubmit={userSubmit}>
                 {({ values, handleChange, handleSubmit, errors, touched }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       label="title"
-                      
                       variant="outlined"
                       className="w-100 mb-4"
                       id="title" // name can also used
@@ -100,7 +108,7 @@ const addShow = () => {
                       onChange={handleChange}
                       value={values.duration}
                     />
-                     <TextField
+                    <TextField
                       label="genere"
                       variant="outlined"
                       className="w-100 mb-4"
@@ -121,7 +129,7 @@ const addShow = () => {
                       error={Boolean(errors.publisher && touched.publisher)}
                     />
 
-<TextField
+                    <TextField
                       label="reviews"
                       variant="outlined"
                       className="w-100 mb-4"
@@ -132,7 +140,7 @@ const addShow = () => {
                       error={Boolean(errors.reviews && touched.reviews)}
                     />
 
-<TextField
+                    <TextField
                       label="rating"
                       variant="outlined"
                       className="w-100 mb-4"
@@ -143,7 +151,7 @@ const addShow = () => {
                       error={Boolean(errors.rating && touched.rating)}
                     />
 
-<TextField
+                    <TextField
                       label="views"
                       variant="outlined"
                       className="w-100 mb-4"
@@ -154,7 +162,7 @@ const addShow = () => {
                       error={Boolean(errors.views && touched.views)}
                     />
 
-<TextField
+                    <TextField
                       label="createdaf"
                       variant="outlined"
                       className="w-100 mb-4"
@@ -164,7 +172,6 @@ const addShow = () => {
                       helperText={errors.createdaf}
                       error={Boolean(errors.createdaf && touched.createdaf)}
                     />
-
 
                     <Button type="submit" variant="contained">
                       Submit
@@ -177,7 +184,7 @@ const addShow = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default addShow;
+export default addShow

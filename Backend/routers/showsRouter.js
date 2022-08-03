@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 router.post('/add',(req,res) => {
     console.log(req.body)
-    new Model(req.body).Save()
+    new Model(req.body).save()
     .then((result) => {
         console.log(result)
         console.log('data saved')
