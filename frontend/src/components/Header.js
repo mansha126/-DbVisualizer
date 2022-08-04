@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
+import "./Header.css"
 const Header = () => {
   return (
     <div>
@@ -11,20 +11,20 @@ const Header = () => {
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" >
+    <ul class="navbar-nav mr-auto" id='id'style={{paddingLeft:"55%"}} >
       <li class="nav-item active">
-        <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
+        <NavLink className="nav-link" aria-current="page" to="/" >Home</NavLink>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" style={{paddingLeft:"6%"}}>
         <NavLink className="nav-link"  to="/loginin">Login</NavLink>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" style={{paddingLeft:"6%"}}>
         <NavLink className="nav-link"  to="/signup">Signup</NavLink>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" style={{paddingLeft:"6%"}}>
         <NavLink className="nav-link"  to="/dashboard2">Dashboard</NavLink>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" style={{paddingLeft:"6%"}}>
         <NavLink className="nav-link"  to="/addshow">AddShow</NavLink>
       </li>
       </ul>

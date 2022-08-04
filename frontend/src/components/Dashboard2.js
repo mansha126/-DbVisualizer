@@ -71,7 +71,7 @@ const Dashboard = () => {
   };
 
   const loadviewshowdata = () => {
-    setViewsLoading(true);
+    setAddShowLoading(true);
     fetch("http://localhost:5000/shows/getall").then((res) => {
       if (res.status === 200) {
         res.json().then((data) => {
@@ -89,11 +89,11 @@ const Dashboard = () => {
     loadviewshowdata();
   }, []);
    
-  const displayShowChart = () => {
-    if (!viewsLoading) {
-      return <Bar data={{}} />;
-    }
-  };
+  // const displayShowChart = () => {
+  //   if (!viewsLoading) {
+  //     return <Bar data={{}} />;
+  //   }
+  // };
   const displayviewsChart = () => {
     if (!viewsLoading) {
       return (
@@ -114,7 +114,7 @@ const Dashboard = () => {
     }
   };
 
-  const loadaddshowData = () => {
+  const loadReviewsshowData = () => {
     setAddShowLoading(true);
     fetch("http://localhost:5000/shows/getall").then((res) => {
       if (res.status === 200) {
@@ -129,7 +129,7 @@ const Dashboard = () => {
     });
   };
   useEffect(() => {
-    loadaddshowData();
+    loadReviewsshowData();
   }, []);
   const displayQtyChart = () => {
     if (!reviewsLoading) {
