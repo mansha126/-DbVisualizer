@@ -8,7 +8,7 @@ import { CardActionArea, Container, Grid } from "@mui/material";
 const Home = () => {
   return (
     <div>
-      <header className="text-white text-center">
+      <header className="text-white text-center" id="showcase">
         <div className="container" style={{ marginTop: "" }}>
           <h1 style={{ marginright: "110px" }}>DATABASE VISUALIZATION</h1>
         </div>

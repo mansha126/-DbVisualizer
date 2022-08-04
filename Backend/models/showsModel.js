@@ -7,7 +7,7 @@ const mySchema = new Schema({
   genre: String,
   publisher: String,
   reviews: Number,
-  rating: Number,
+  ratings: Number,
   views: Number,
   createdAt: Date,
 });

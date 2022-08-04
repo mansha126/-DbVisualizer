@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Signup from "./components/Signup";
 import Loginin from "./components/Loginin";
-import Dashboard from "./components/Dashboard";
+// import Dashboard from "./components/Dashboard";
 import AddShow from "./components/addShow";
 import Home from "./components/Home";
+import Dashboard2 from "./components/Dashboard2";
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
         <Route element={<Home></Home>} path="/" />
         <Route element={<Loginin></Loginin>} path="loginin" />
         <Route element={<Signup></Signup>} path="signup" />
-        <Route element={<Dashboard></Dashboard>} path="dashboard" />
+        {/* <Route element={<Dashboard></Dashboard>} path="dashboard" /> */}
         <Route element={<AddShow></AddShow>} path="addshow" />
+        <Route element={<Dashboard2></Dashboard2>} path="dashboard2" />
         {/* <Route element={<Home></Home>} path="home"/> */}
       </Routes>
     </BrowserRouter>
