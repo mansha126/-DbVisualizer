@@ -41,3 +41,7 @@
 .chart-cont{
   height: 40vh;
 }
+*{
+  transition-duration: 300ms;
+  transition-property: all;
+}

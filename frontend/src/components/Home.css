@@ -87,8 +87,12 @@ body {
     margin: 0% 3%;
   }
 }
+#done{
+  transition-duration: 400ms;
+  transition-property: all;
+}
 #done:hover{ 
-    transform: translateY(-50px);
+    transform: translateY(-30px);
     box-shadow: 1px 5px 5px 3px rgba(0,0,0,0.0.137);
 }
 

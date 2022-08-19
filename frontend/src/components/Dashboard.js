@@ -9,8 +9,10 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const Dashboard = () => {
   const labels = ["January", "February", "March", "April", "May", "June", "July"]
   const [qtyData, setQtyData] = useState({})
-  const [reviewsLoading, setReviewsLoading] = useState(false)
-  const [addShowLoading, setAddShowLoading] = useState(false)
+  const [reviewData, setReviewData] = useState({});
+  const [ratingData, setRatingData] = useState({});
+  const [reviewsLoading, setReviewsLoading] = useState(false);
+  const [addShowLoading, setAddShowLoading] = useState(false);
  const [viewsLoading, setviewsLoading] = useState(false)
 //  const [views, setViews] = useState({})
 //  const [reviews, setReviews] = useState({})
@@ -50,53 +52,55 @@ const Dashboard = () => {
           // setProductData(data)
 
           setQtyData(extractData(data, "title", "views"))
+          setReviewData(extractData(data, "title", "reviews"))
         })
       }
     })
   }
+
 
 useEffect(() => {
   loadviewshowdata()
  }, [])
 
- const displayviewsChart = () => {
-  if (!viewsLoading) {
-    return (
-      <Bar style={{height : '100%', width : '100%'}}
-        data={{
-          labels: qtyData.labels,
-          datasets: [
-            {
-              label: "Quantity",
-              data: qtyData.data,
-              backgroundColor: "rgba(255, 99, 132, 0.5)",
-            },
-          ],
-        }}
-      />
-    )
+
+  const displayReviewsChart = () => {
+    if (!reviewsLoading) {
+      return (
+        <Bar style={{height : '100%', width : '100%'}}
+          data={{
+            labels: reviewData.labels,
+            datasets: [
+              {
+                label: "Reviews",
+                data: reviewData.data,
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+              },
+            ],
+          }}
+        />
+      )
+    }
   }
-}
-
-
-  const loadaddshowData = () => {
-    setAddShowLoading(true)
-    fetch("http://localhost:5000/shows/getall").then((res) => {
-      if (res.status === 200) {
-        res.json().then((data) => {
-          console.log(data)
-          // setProductLoading(false)
-          // setProductData(data)
-
-          setQtyData(extractData(data, "title", "reviews"))
-        })
-      }
-    })
+  const displayViewsChart = () => {
+    if (!reviewsLoading) {
+      return (
+        <Bar style={{height : '100%', width : '100%'}}
+          data={{
+            labels: qtyData.labels,
+            datasets: [
+              {
+                label: "Quantity",
+                data: qtyData.data,
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+              },
+            ],
+          }}
+        />
+      )
+    }
   }
-  useEffect(() => {
-    loadaddshowData()
-  }, [])
-  const displayQtyChart = () => {
+  const displayRatingChart = () => {
     if (!reviewsLoading) {
       return (
         <Bar style={{height : '100%', width : '100%'}}
@@ -132,7 +136,7 @@ useEffect(() => {
               <div className="card-header">
                 <h4>Product Quantity</h4>
               </div>
-              <div className="card-body">{displayQtyChart()}</div>
+              <div className="card-body">{displayReviewsChart()}</div>
             </div>
           </div>
           <div className="col-md-4 mt-4">
@@ -140,7 +144,7 @@ useEffect(() => {
               <div className="card-header">
                 <h4>Product Quantity</h4>
               </div>
-              <div className="card-body">{displayQtyChart()}</div>
+              <div className="card-body">{displayViewsChart()}</div>
             </div>
           </div>
           <div className="col-md-4 mt-4">
@@ -148,29 +152,11 @@ useEffect(() => {
               <div className="card-header">
                 <h4>Product Quantity</h4>
               </div>
-              <div className="card-body">{displayQtyChart()}</div>
+              <div className="card-body">{displayRatingChart()}</div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md mt-4">
-            <div className="card chart-cont">
-              <div className="card-header">
-                <h4>Product Quantity</h4>
-              </div>
-              <div className="card-body">{displayQtyChart()}</div>
-            </div>
-          </div>
-          <div className="col-md mt-4">
-            <div className="card chart-cont">
-              <div className="card-header">
-                <h4>Product Quantity</h4>
-              </div>
-              <div className="card-body">{displayQtyChart()}</div>
-              <div className="card-body">{displayviewsChart()}</div>
-            </div>
-          </div>
-        </div>
+        
         
         </div>
     </div>

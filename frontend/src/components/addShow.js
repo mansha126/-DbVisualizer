@@ -100,6 +100,7 @@ const AddShow = () => {
                     <TextField
                       label="title"
                       variant="outlined"
+                      placeholder="Enter title"
                       className="w-100 mb-4"
                       id="title" // name can also used
                       onChange={handleChange}
