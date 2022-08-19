@@ -17,14 +17,14 @@ function App() {
         <Route element={<Home></Home>} path="/" />
         <Route element={<Loginin></Loginin>} path="loginin" />
         <Route element={<Signup></Signup>} path="signup" />
-        {/* <Route element={<Dashboard></Dashboard>} path="dashboard" /> */}
-        <Route element={<AddShow></AddShow>} path="addshow" />
-        <Route element={<Dashboard2></Dashboard2>} path="dashboard2" />
-        {/* <Route element={<Home></Home>} path="home"/> */}
-    
-      </Routes>
-    </BrowserRouter>
-  );
-}
+          {/* <Route element={<Dashboard></Dashboard>} path="dashboard" /> */}
+          <Route element={<AddShow></AddShow>} path="addshow" />
+          <Route element={<Dashboard2></Dashboard2>} path="dashboard2" />
+          {/* <Route element={<Home></Home>} path="home"/> */}
+      
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 
-export default App;
+  export default App;
