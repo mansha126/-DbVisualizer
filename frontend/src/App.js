@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Signup from "./components/Signup";
 import Loginin from "./components/Loginin";
 // import Dashboard from "./components/Dashboard";
-import AddShow from "./components/addShow";
+import AddShow from "./components/AddShow";
 import Home from "./components/Home";
 import Dashboard2 from "./components/Dashboard2";
 
@@ -21,6 +21,7 @@ function App() {
         <Route element={<AddShow></AddShow>} path="addshow" />
         <Route element={<Dashboard2></Dashboard2>} path="dashboard2" />
         {/* <Route element={<Home></Home>} path="home"/> */}
+    
       </Routes>
     </BrowserRouter>
   );

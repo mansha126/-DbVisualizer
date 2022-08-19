@@ -1,10 +1,11 @@
-import { Button, TextField } from "@mui/material"
-import React from "react"
-import { Formik } from "formik"
-import Swal from "sweetalert2"
+import { Button, TextField } from "@mui/material";
+import React from "react";
+import { Formik } from "formik";
+import Swal from "sweetalert2";
+import "./AddShow.css"
 // import * as Yup from "yup";
 
-const addShow = () => {
+const AddShow = () => {
   // 1. Create a form object which should match with model fields
   const userForm = {
     title: "",
@@ -15,11 +16,11 @@ const addShow = () => {
     rating: "",
     views: "",
     createdAt: new Date(),
-  }
+  };
 
   // 2. Create a function for form submission
   const userSubmit = (formdata) => {
-    console.log(formdata)
+    console.log(formdata);
 
     fetch("http://localhost:5000/shows/add", {
       method: "POST",
@@ -27,18 +28,17 @@ const addShow = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    .then((res) => {
-          if (res.status === 200) {
-            console.log("data saved");
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Show Added Successfully!!👍",
-            });
-          }
-        })
-  }
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("data saved");
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Show Added Successfully!!👍",
+        });
+      }
+    });
+  };
   // fetch("http://localhost:5000/users/add", {
   //   method: "POST",
   //   body: JSON.stringify(formdata), //convert javascript to json
@@ -78,15 +78,22 @@ const addShow = () => {
   //     ),
   // });
   return (
-    <div className="container">
-      <div className="card" style={{ marginTop: "10%" }}>
+      <body id="peach">
+    <div className="container" >
+      <div className="card" id="word">
         <div className="card-body">
           <div className="row">
-            <div className="col">{/* <img src={"frontend/components/image.png"} alt=""/> */}</div>
+          <h1 id="unique">ADD YOUR MOVIES HERE</h1>
+          </div>
+          <div className="row g-0">
+            <div className="col ">
+              {/* <img src="https://wallpapertops.com/walldb/original/f/7/4/437204.jpg"/> */}
+             <img id="beauti "src="https://i.pinimg.com/564x/f3/3d/75/f33d7515a9a1e5bee36090d1fe31ad32.jpg" class="img-fluid object-fit:cover" />
+            </div>
             <div className="col">
-              {/* <h1>Signup Here</h1> */}
+             
               {/* <hr className="mb-5" /> */}
-
+             
               <Formik initialValues={userForm} onSubmit={userSubmit}>
                 {({ values, handleChange, handleSubmit, errors, touched }) => (
                   <form onSubmit={handleSubmit}>
@@ -162,7 +169,6 @@ const addShow = () => {
                       error={Boolean(errors.views && touched.views)}
                     />
 
-
                     <TextField
                       label="createdaf"
                       variant="outlined"
@@ -185,7 +191,8 @@ const addShow = () => {
         </div>
       </div>
     </div>
-  )
-}
+    </body>
+  );
+};
 
-export default addShow
+export default AddShow;

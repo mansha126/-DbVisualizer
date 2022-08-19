@@ -8,10 +8,20 @@ import { CardActionArea, Container, Grid } from "@mui/material";
 const Home = () => {
   return (
     <div>
-      <header className="text-white text-center" id="showcase">
-        <div className="container" style={{ marginTop: "" }}>
-          <h1 style={{ marginright: "110px" }}>DATABASE VISUALIZATION</h1>
+      <header className=" text-center" id="showcase">
+        <h1 id="one">W E L C O M E </h1>
+
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search anything"
+            class="search-input"
+          />
+          <a href="#" class="search-btn">
+            <i class="fas fa-search"></i>
+          </a>
         </div>
+        <div className="container" style={{ paddingTop: "40%" }}></div>
       </header>
       {/* <div className="container" id="contain"> */}
       {/* <div class="row"> */}
@@ -19,7 +29,7 @@ const Home = () => {
       <Container maxWidth="x1" className="mt-5">
         <Grid container spacing={5}>
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -42,7 +52,7 @@ const Home = () => {
           </Grid>
 
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -65,7 +75,7 @@ const Home = () => {
             </Card>
           </Grid>
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -88,7 +98,7 @@ const Home = () => {
             </Card>
           </Grid>
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -113,7 +123,7 @@ const Home = () => {
 
         <Grid container spacing={5} marginTop="5px" marginBottom="3%">
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -137,7 +147,7 @@ const Home = () => {
           </Grid>
 
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -159,7 +169,7 @@ const Home = () => {
             </Card>
           </Grid>
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -182,7 +192,7 @@ const Home = () => {
             </Card>
           </Grid>
           <Grid item md={3} sm={3} xs={12}>
-            <Card className="caerd" sx={{ maxWidth: 345 }}>
+            <Card className="card" id="done" sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -205,22 +215,21 @@ const Home = () => {
             </Card>
           </Grid>
         </Grid>
-      
       </Container>
 
-      <footer >
+      <footer>
         <div class="footer">
-          <div class="row"style={{paddingLeft:"45%"}} >
-            <a href="#" style={{width:24 ,height:24}}>
+          <div class="row" style={{ paddingLeft: "45%" }}>
+            <a href="#" style={{ width: 24, height: 24 }}>
               <i class="fa fa-facebook"></i>
             </a>
-            <a href="#"style={{width:24 ,height:24,paddingLeft:"3%"}}>
+            <a href="#" style={{ width: 24, height: 24, paddingLeft: "3%" }}>
               <i class="fa fa-instagram"></i>
             </a>
-            <a href="#"style={{width:24 ,height:24,paddingLeft:"4%"}}>
+            <a href="#" style={{ width: 24, height: 24, paddingLeft: "4%" }}>
               <i class="fa fa-youtube"></i>
             </a>
-            <a href="#"style={{width:24 ,height:24,paddingLeft:"5%"}}>
+            <a href="#" style={{ width: 24, height: 24, paddingLeft: "5%" }}>
               <i class="fa fa-twitter"></i>
             </a>
           </div>
@@ -245,16 +254,12 @@ const Home = () => {
             </ul>
           </div>
 
-          <div class="row" style={{marginLeft:"30%"}}>
+          <div class="row" style={{ marginLeft: "30%" }}>
             INFERNO Copyright © 2022 Inferno - All rights reserved || Designed
             By: Rajil Aziz
           </div>
         </div>
-     
       </footer>
-
-      
-
     </div>
 
     // </div>

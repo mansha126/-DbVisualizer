@@ -91,7 +91,7 @@ const Signup = () => {
             <TextField
               label="Password"
               variant="outlined"
-              className="w-100 mb-4"
+              className ="w-100 mb-4"
               id="password"
               type='password'
               onChange={handleChange}

@@ -1,9 +1,3 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea, Container, Grid } from "@mui/material";
-
 import { Bar } from "react-chartjs-2";
 import "./Dashboard2.css";
 import { useEffect, useState } from "react";
@@ -236,13 +230,14 @@ const Dashboard = () => {
           <div className="col-md-4 mt-4">
             <div className="card chart-cont">
               <div className="card-header">
-                <h4>views Chart</h4>
+                <h4>Rating Chart</h4>
               </div>
               <div className="card-body">{displayQtyChart()}</div>
             </div>
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
