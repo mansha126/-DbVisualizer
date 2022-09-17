@@ -1,22 +1,44 @@
-import { Bar } from "react-chartjs-2"
+import { Bar } from "react-chartjs-2";
 
-import { useEffect, useState } from "react"
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js"
+import { useEffect, useState } from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Dashboard = () => {
-  const labels = ["January", "February", "March", "April", "May", "June", "July"]
-  const [qtyData, setQtyData] = useState({})
+  const labels = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+  ];
+  const [qtyData, setQtyData] = useState({});
   const [reviewData, setReviewData] = useState({});
   const [ratingData, setRatingData] = useState({});
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [addShowLoading, setAddShowLoading] = useState(false);
- const [viewsLoading, setviewsLoading] = useState(false)
-//  const [views, setViews] = useState({})
-//  const [reviews, setReviews] = useState({})
-  
+  const [viewsLoading, setviewsLoading] = useState(false);
+  //  const [views, setViews] = useState({})
+  //  const [reviews, setReviews] = useState({})
+
   const data = {
     labels,
     datasets: [
@@ -31,43 +53,42 @@ const Dashboard = () => {
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
-  }
+  };
   const extractData = (data, labelfield, datafield) => {
-    const result = { labels: [], data: [] }
+    const result = { labels: [], data: [] };
     data.map((item) => {
-      result.labels.push(item[labelfield])
-      result.data.push(item[datafield])
-    })
-    console.log(result)
-    return result
-  }
-  
-  const loadviewshowdata =()=>{
-    setAddShowLoading(true)
+      result.labels.push(item[labelfield]);
+      result.data.push(item[datafield]);
+    });
+    console.log(result);
+    return result;
+  };
+
+  const loadviewshowdata = () => {
+    setAddShowLoading(true);
     fetch("http://localhost:5000/shows/getall").then((res) => {
       if (res.status === 200) {
         res.json().then((data) => {
-          console.log(data)
+          console.log(data);
           // setProductLoading(false)
           // setProductData(data)
 
-          setQtyData(extractData(data, "title", "views"))
-          setReviewData(extractData(data, "title", "reviews"))
-        })
+          setQtyData(extractData(data, "title", "views"));
+          setReviewData(extractData(data, "title", "reviews"));
+        });
       }
-    })
-  }
+    });
+  };
 
-
-useEffect(() => {
-  loadviewshowdata()
- }, [])
-
+  useEffect(() => {
+    loadviewshowdata();
+  }, []);
 
   const displayReviewsChart = () => {
     if (!reviewsLoading) {
       return (
-        <Bar style={{height : '100%', width : '100%'}}
+        <Bar
+          style={{ height: "100%", width: "100%" }}
           data={{
             labels: reviewData.labels,
             datasets: [
@@ -79,13 +100,14 @@ useEffect(() => {
             ],
           }}
         />
-      )
+      );
     }
-  }
+  };
   const displayViewsChart = () => {
     if (!reviewsLoading) {
       return (
-        <Bar style={{height : '100%', width : '100%'}}
+        <Bar
+          style={{ height: "100%", width: "100%" }}
           data={{
             labels: qtyData.labels,
             datasets: [
@@ -97,29 +119,29 @@ useEffect(() => {
             ],
           }}
         />
-      )
+      );
     }
-  }
+  };
   const displayRatingChart = () => {
     if (!reviewsLoading) {
       return (
-        <Bar style={{height : '100%', width : '100%'}}
+        <Bar
+          style={{ height: "100%", width: "100%" }}
           data={{
-            labels: qtyData.labels,
+            labels: reviewData.labels,
             datasets: [
               {
                 label: "Quantity",
-                data: qtyData.data,
+                data: reviewData.data,
                 backgroundColor: "rgba(255, 99, 132, 0.5)",
               },
             ],
           }}
         />
-      )
+      );
     }
-  }
+  };
 
-  
   return (
     <div>
       {/* <Bar  data={data} />; */}
@@ -129,7 +151,7 @@ useEffect(() => {
           <h1 className="text-center">Realtime Dashboard</h1>
         </div>
       </header>
-        <div className="container-fluid">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 mt-4">
             <div className="card chart-cont">
@@ -156,13 +178,9 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        
-        
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
-
-
+export default Dashboard;

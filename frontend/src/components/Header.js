@@ -24,7 +24,7 @@ const Header = () => {
         <NavLink className="nav-link"  to="/signup">Signup</NavLink>
       </li>
       <li class="nav-item active" style={{paddingLeft:"6%"}}>
-        <NavLink className="nav-link"  to="/dashboard2">Dashboard</NavLink>
+        <NavLink className="nav-link"  to="/dashboard">Dashboard</NavLink>
       </li>
       <li class="nav-item active" style={{paddingLeft:"6%"}}>
         <NavLink className="nav-link"  to="/addshow">AddShow</NavLink>

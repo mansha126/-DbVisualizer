@@ -7,6 +7,7 @@ import Loginin from "./components/Loginin";
 import AddShow from "./components/AddShow";
 import Home from "./components/Home";
 import Dashboard2 from "./components/Dashboard2";
+import Dashboard from "./components/Dashboard2";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route element={<Signup></Signup>} path="signup" />
           {/* <Route element={<Dashboard></Dashboard>} path="dashboard" /> */}
           <Route element={<AddShow></AddShow>} path="addshow" />
-          <Route element={<Dashboard2></Dashboard2>} path="dashboard2" />
+          <Route element={<Dashboard></Dashboard>} path="dashboard" />
           {/* <Route element={<Home></Home>} path="home"/> */}
       
         </Routes>
