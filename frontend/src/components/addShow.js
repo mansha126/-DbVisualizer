@@ -10,10 +10,10 @@ const AddShow = () => {
   const userForm = {
     title: "",
     duration: "",
-    genere: "",
+    genre: "",
     publisher: "",
     reviews: "",
-    rating: "",
+    ratings: "",
     views: "",
     createdAt: new Date(),
   };
@@ -117,14 +117,14 @@ const AddShow = () => {
                       value={values.duration}
                     />
                     <TextField
-                      label="genere"
+                      label="genre"
                       variant="outlined"
                       className="w-100 mb-4"
-                      id="genere" // name can also used
+                      id="genre" // name can also used
                       onChange={handleChange}
-                      value={values.genere} // value passed above
-                      helperText={errors.genere}
-                      error={Boolean(errors.genere && touched.genere)}
+                      value={values.genre} // value passed above
+                      helperText={errors.genre}
+                      error={Boolean(errors.genre && touched.genre)}
                     />
                     <TextField
                       label="Publisher"
@@ -152,11 +152,11 @@ const AddShow = () => {
                       label="rating"
                       variant="outlined"
                       className="w-100 mb-4"
-                      id="rating" // name can also used
+                      id="ratings" // name can also used
                       onChange={handleChange}
-                      value={values.rating} // value passed above
-                      helperText={errors.rating}
-                      error={Boolean(errors.rating && touched.rating)}
+                      value={values.ratings} // value passed above
+                      helperText={errors.ratings}
+                      error={Boolean(errors.ratings && touched.ratings)}
                     />
 
                     <TextField

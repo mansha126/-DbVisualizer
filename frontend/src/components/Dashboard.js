@@ -1,43 +1,18 @@
-import { Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2"
 
-import { useEffect, useState } from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { useEffect, useState } from "react"
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js"
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const Dashboard = () => {
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
-  const [qtyData, setQtyData] = useState({});
-  const [reviewData, setReviewData] = useState({});
-  const [ratingData, setRatingData] = useState({});
-  const [reviewsLoading, setReviewsLoading] = useState(false);
-  const [addShowLoading, setAddShowLoading] = useState(false);
-  const [viewsLoading, setviewsLoading] = useState(false);
-  //  const [views, setViews] = useState({})
-  //  const [reviews, setReviews] = useState({})
+  const labels = ["January", "February", "March", "April", "May", "June", "July"]
+  const [reviewData, setReviewData] = useState([])
+  const [viewsData, setViewsData] = useState([])
+  const [ratingData, setRatingData] = useState([])
+  const [publisherData, setPublisherData] = useState([]);
+  const [reviewsLoading, setReviewsLoading] = useState(false)
+  const [genreData, setGenreData] = useState([])
 
   const data = {
     labels,
@@ -53,36 +28,54 @@ const Dashboard = () => {
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
-  };
+  }
   const extractData = (data, labelfield, datafield) => {
-    const result = { labels: [], data: [] };
+    const result = { labels: [], data: [] }
     data.map((item) => {
-      result.labels.push(item[labelfield]);
-      result.data.push(item[datafield]);
-    });
-    console.log(result);
-    return result;
-  };
+      result.labels.push(item[labelfield])
+      result.data.push(item[datafield])
+    })
+    // console.log(result)
+    return result
+  }
+
+  const groupData = (data, groupfield, operation) => {
+    let groups = [...new Set(data.map(show => show[groupfield]))];
+
+    let result = { labels: groups, data: [...Array(groups.length).keys()].map(i=> 0) }
+    data.forEach((item) => {
+      if(operation === 'sum')
+        result.data[result.labels.indexOf(item[groupfield])] +=1;
+      else if(operation === 'mean')
+        result.data[result.labels.indexOf(item[groupfield])] +=1;
+    })
+    console.log(result)
+    return result
+  }
 
   const loadviewshowdata = () => {
-    setAddShowLoading(true);
+    setReviewsLoading(true)
     fetch("http://localhost:5000/shows/getall").then((res) => {
       if (res.status === 200) {
         res.json().then((data) => {
-          console.log(data);
+          console.log(data)
           // setProductLoading(false)
           // setProductData(data)
 
-          setQtyData(extractData(data, "title", "views"));
-          setReviewData(extractData(data, "title", "reviews"));
-        });
+          setViewsData(extractData(data, "title", "views"))
+          setReviewData(extractData(data, "title", "reviews"))
+          setRatingData(extractData(data, "title", "ratings"))
+          setPublisherData(groupData(data, 'publisher', 'sum'))
+          setGenreData(groupData(data, 'genre', 'sum'))
+          setReviewsLoading(false)
+        })
       }
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    loadviewshowdata();
-  }, []);
+    loadviewshowdata()
+  }, [])
 
   const displayReviewsChart = () => {
     if (!reviewsLoading) {
@@ -93,94 +86,150 @@ const Dashboard = () => {
             labels: reviewData.labels,
             datasets: [
               {
-                label: "Reviews",
+                label: "Ratings",
                 data: reviewData.data,
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                backgroundColor: "#56007e",
               },
             ],
           }}
         />
-      );
+      )
     }
-  };
+  }
   const displayViewsChart = () => {
     if (!reviewsLoading) {
       return (
         <Bar
           style={{ height: "100%", width: "100%" }}
           data={{
-            labels: qtyData.labels,
+            labels: viewsData.labels,
             datasets: [
               {
-                label: "Quantity",
-                data: qtyData.data,
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                label: "Views",
+                data: viewsData.data,
+                backgroundColor: "#00ccff",
               },
             ],
           }}
         />
-      );
+      )
     }
-  };
+  }
   const displayRatingChart = () => {
     if (!reviewsLoading) {
       return (
         <Bar
           style={{ height: "100%", width: "100%" }}
           data={{
-            labels: reviewData.labels,
+            labels: ratingData.labels,
             datasets: [
               {
-                label: "Quantity",
-                data: reviewData.data,
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                label: "Stars",
+                data: ratingData.data,
+                backgroundColor: "#66ff00",
               },
             ],
           }}
         />
-      );
+      )
     }
-  };
+  }
+
+  const displayPublisherChart = () => {
+    if (!reviewsLoading) {
+      return (
+        <Bar
+          style={{ height: "100%", width: "100%" }}
+          data={{
+            labels: publisherData.labels,
+            datasets: [
+              {
+                label: "Shows",
+                data: publisherData.data,
+                backgroundColor: "#ddff00",
+              },
+            ],
+          }}
+        />
+      )
+    }
+  }
+
+  const displayGenreChart = () => {
+    if (!reviewsLoading) {
+      return (
+        <Bar
+          style={{ height: "100%", width: "100%" }}
+          data={{
+            labels: genreData.labels,
+            datasets: [
+              {
+                label: "No. of Shows",
+                data: genreData.data,
+                backgroundColor: "#ff00d4",
+              },
+            ],
+          }}
+        />
+      )
+    }
+  }
 
   return (
     <div>
       {/* <Bar  data={data} />; */}
 
       <header>
-        <div className="container">
+        <div className="col-md-10 mx-auto pt-5">
           <h1 className="text-center">Realtime Dashboard</h1>
         </div>
       </header>
-      <div className="container-fluid">
+      <div className="col-md-10 mx-auto">
         <div className="row">
-          <div className="col-md-4 mt-4">
+          <div className="col-md-6 mt-5">
             <div className="card chart-cont">
               <div className="card-header">
-                <h4>Product Quantity</h4>
+                <h4>Comparison of No. of Ratings</h4>
               </div>
               <div className="card-body">{displayReviewsChart()}</div>
             </div>
           </div>
-          <div className="col-md-4 mt-4">
+          <div className="col-md-6 mt-5">
             <div className="card chart-cont">
               <div className="card-header">
-                <h4>Product Quantity</h4>
+                <h4>Comparison of No. of Views</h4>
               </div>
               <div className="card-body">{displayViewsChart()}</div>
             </div>
           </div>
-          <div className="col-md-4 mt-4">
-            <div className="card chart-cont">
+          <div className="col-md-6 mt-5">
+            <div className="card chart-cont ">
               <div className="card-header">
-                <h4>Product Quantity</h4>
+                <h4>Comparison of Ratings</h4>
               </div>
               <div className="card-body">{displayRatingChart()}</div>
+            </div>
+          </div>
+          <div className="col-md-6 mt-5">
+            <div className="card chart-cont ">
+              <div className="card-header">
+                <h4>No. of Shows by Each Publisher</h4>
+              </div>
+              <div className="card-body">{displayPublisherChart()}</div>
+            </div>
+          </div>
+          <div className="col-md-6 mt-5">
+            <div className="card chart-cont ">
+              <div className="card-header">
+                <h4>Top Genres</h4>
+              </div>
+              <div className="card-body">{displayGenreChart()}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

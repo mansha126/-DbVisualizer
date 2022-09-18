@@ -25,6 +25,7 @@
 }
 
 .App-link {
+  /* color: #ddff00; */
   color: #61dafb;
 }
 
@@ -39,7 +40,7 @@
 
 
 .chart-cont{
-  height: 40vh;
+  height: 50vh;
 }
 *{
   transition-duration: 300ms;

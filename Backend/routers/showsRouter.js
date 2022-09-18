@@ -27,4 +27,15 @@ router.get('/getall', (req, res) => {
     });
     //res.send('get all from user router')
 })
+
+router.delete('/delete/:id', (req, res) => {
+    Model.findByIdAndDelete(req.params.id)
+    .then((result) => {
+        console.log(result);
+        res.json(result);        
+    }).catch((err) => {
+        console.error(err);
+        res.json(err);
+    });
+})
 module.exports=router;
