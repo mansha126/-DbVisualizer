@@ -6,7 +6,8 @@ import Loginin from "./components/Loginin";
 import Dashboard from "./components/Dashboard";
 import AddShow from "./components/AddShow";
 import Home from "./components/Home";
-import Manageshow from "./components/manageShow"
+import ShowManager from "./components/ShowManager"
+
 // import Dashboard2 from "./components/Dashboard2";
 // import Dashboard from "./components/Dashboard2";
 
@@ -22,7 +23,8 @@ function App() {
           {/* <Route element={<Dashboard></Dashboard>} path="dashboard" /> */}
           <Route element={<AddShow></AddShow>} path="addshow" />
           <Route element={<Dashboard></Dashboard>} path="dashboard" />
-          <Route element={<Manageshow/>} path="manageshow"/>
+          <Route element={<ShowManager></ShowManager>} path="showmanager" />
+          
           {/* <Route element={<Home></Home>} path="home"/> */}
       
         </Routes>
